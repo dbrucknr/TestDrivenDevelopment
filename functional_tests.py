@@ -23,7 +23,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-Do', header_text)
 
         # Invite the user to enter data into a to-do item
-        inputbox = self.browser.find_elements_by_id('id_new_item')
+        inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
             inputbox.get_attribute('placeholder'),
             'Enter a to-do item'
@@ -35,10 +35,11 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1) # explicit wait - allows browser to complete operations
 
-        table = self.browser.find_elements_by_id('id_list_table')
-        rows = table.find_element_by_tag_name('tr')
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows)
+            any(row.text == '1: Complete SI 699 Homework' for row in rows),
+            "New to-do item did not appear in table" #add a failure message
         )
         # Another text box inviting user to add more data.
         # Page updates again.
