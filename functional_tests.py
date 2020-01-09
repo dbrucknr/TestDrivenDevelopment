@@ -33,7 +33,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys('Complete SI 699 Homework')
         # User selects and presses their <enter> key:
         inputbox.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(1) # explicit wait - allows browser to complete operations
 
         table = self.browser.find_elements_by_id('id_list_table')
         rows = table.find_element_by_tag_name('tr')
@@ -43,7 +43,7 @@ class NewVisitorTest(unittest.TestCase):
         # Another text box inviting user to add more data.
         # Page updates again.
         self.fail('Finish writing the test.')
-        
+
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
 # Invite to enter/create a to-do item right away
